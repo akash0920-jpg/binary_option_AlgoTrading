@@ -40,16 +40,16 @@ df = df.dropna()
 
 # Features and Targets
 features = ['Time1', 'momentum', 'accl']
-# x_train = df[features].iloc[:-500]
-# y_train = df['target'].iloc[:-500]
+x_train = df[features].iloc[:-100]
+y_train = df['target'].iloc[:-100]
 
-# x_test = df[features].iloc[-500:]
-# y_test = df['target'].iloc[-500:]
+x_test = df[features].iloc[-100:]
+y_test = df['target'].iloc[-100:]
 
-x=df[features]
-y=df['target']
+# x=df[features]
+# y=df['target']
 
-x_train,x_test,y_train,y_test=train_test_split(x,y,stratify=y,test_size=0.05)
+# x_train,x_test,y_train,y_test=train_test_split(x,y,stratify=y,test_size=0.05)
 print(len(x_train))
 # Scale specifically for KNN
 scaler = StandardScaler()
