@@ -50,7 +50,7 @@ y_test = df['target'].iloc[-100:]
 # y=df['target']
 
 # x_train,x_test,y_train,y_test=train_test_split(x,y,stratify=y,test_size=0.05)
-print(len(x_train))
+# print(len(x_train))
 # Scale specifically for KNN
 scaler = StandardScaler()
 x_train_scaled = scaler.fit_transform(x_train)
