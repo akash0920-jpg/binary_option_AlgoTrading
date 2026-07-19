@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import pickle
 from sklearn.metrics import confusion_matrix, precision_score, accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -50,7 +51,7 @@ y_test = df['target'].iloc[-100:]
 # y=df['target']
 
 # x_train,x_test,y_train,y_test=train_test_split(x,y,stratify=y,test_size=0.05)
-# print(len(x_train))
+print(len(x_train))
 # Scale specifically for KNN
 scaler = StandardScaler()
 x_train_scaled = scaler.fit_transform(x_train)
@@ -74,6 +75,10 @@ rf_threshold = 0.50
 
 # Optimized vector comparison (Way faster than a Python loop)
 y_pred = np.where((knn_probs >= knn_threshold) & (rf_probs >= rf_threshold), 1, 0)
+
+pickle.dump(knn,open('knn_model.pkl','wb'))
+pickle.dump(forest,open('rf_model.pkl','wb'))
+pickle.dump(scaler,open('scaler.pkl','wb'))
 
 # Evaluate
 print(confusion_matrix(y_test, y_pred))
