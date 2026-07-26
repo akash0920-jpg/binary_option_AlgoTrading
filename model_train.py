@@ -41,11 +41,11 @@ df = df.dropna()
 
 # Features and Targets
 features = ['Time1', 'momentum', 'accl']
-x_train = df[features].iloc[:-100]
-y_train = df['target'].iloc[:-100]
+x_train = df[features].iloc[:-500]
+y_train = df['target'].iloc[:-500]
 
-x_test = df[features].iloc[-100:]
-y_test = df['target'].iloc[-100:]
+x_test = df[features].iloc[-500:]
+y_test = df['target'].iloc[-500:]
 
 # x=df[features]
 # y=df['target']
