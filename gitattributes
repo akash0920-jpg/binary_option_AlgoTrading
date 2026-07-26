@@ -1,0 +1,6 @@
+* text=auto
+
+# Shell scripts must always use LF, even on Windows checkouts,
+# or the shebang breaks inside the Linux container.
+*.sh text eol=lf
+Dockerfile text eol=lf

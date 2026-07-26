@@ -1,0 +1,9 @@
+Dataset/
+Train and test/
+.git/
+.gitignore
+README.md
+__pycache__/
+*.pyc
+.venv/
+.env
