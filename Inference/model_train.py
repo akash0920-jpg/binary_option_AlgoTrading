@@ -51,7 +51,7 @@ y_test = df['target'].iloc[-500:]
 # y=df['target']
 
 # x_train,x_test,y_train,y_test=train_test_split(x,y,stratify=y,test_size=0.05)
-print(len(x_train))
+print(f'Number of data the model trained on : {len(x_train)}')
 # Scale specifically for KNN
 scaler = StandardScaler()
 x_train_scaled = scaler.fit_transform(x_train)
@@ -68,7 +68,7 @@ forest.fit(x_train, y_train) # RF works great on unscaled data
 # Get Probabilities for the Positive Class (1)
 knn_probs = knn.predict_proba(x_test_scaled)[:, 1]
 rf_probs = forest.predict_proba(x_test)[:, 1]
-print(max(rf_probs),max(knn_probs))
+print(f'Max probability by Random Forest:{max(rf_probs)},By KNN:{max(knn_probs)}')
 # Ensembled Threshold Logic: Tune these to get higher precision!
 knn_threshold = 0.50
 rf_threshold = 0.50
