@@ -1,0 +1,10 @@
+streamlit>=1.28.0
+yfinance>=0.2.18
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.2.0
+plotly>=5.14.0
+matplotlib>=3.7.0
+playwright>=1.35.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
