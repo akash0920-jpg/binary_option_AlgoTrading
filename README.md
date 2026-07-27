@@ -34,6 +34,36 @@ Here is how the prediction pipeline works from raw data to trade execution:
 
 ---
 
+## Repository Structure
+```
+binary_option_AlgoTrading/
+├── Dataset/
+│   ├── Cleaned_trend_bit.csv        # Preprocessed/engineered feature dataset
+│   └── combined_tend_BIT.csv        # Combined raw trend data
+├── Inference/
+│   ├── knn_model.pkl                # Trained K-Nearest Neighbors model
+│   ├── rf_model.pkl                 # Trained Random Forest model
+│   ├── scaler.pkl                   # StandardScaler fitted on training data
+│   ├── model_train.py               # Pulls fresh data & retrains knn/rf/scaler
+│   ├── sim.py                       # Streamlit live-simulation dashboard
+│   └── Unseen_Test_result.txt       # Log of precision scores on unseen data
+├── Train and test/
+│   ├── binomo_deploy.py             # Browser automation for live trade execution on Binomo
+│   ├── data_extraction.py           # Historical data extraction/preprocessing
+│   ├── eda.ipynb                    # Exploratory data analysis
+│   └── tuning_and_feature_sele.ipynb # Hyperparameter tuning & feature selection
+├── Dockerfile                       # Containerizes the Streamlit dashboard
+├── entrypoint.sh                    # Retrains models, then launches the dashboard
+├── .dockerignore                    # Keeps the Docker build context lean
+├── .gitattributes                   # Forces LF line endings for shell scripts
+├── requirements.txt                 # Python dependencies
+└── README.md
+```
+
+**Note:** `Inference/` is the only folder needed to run the live dashboard (via Docker or locally) — it contains the pre-trained models plus the script that refreshes them. `Train and test/` holds the offline research/training workflow and the live broker-automation script, which needs a real display and broker credentials, so it isn't included in the Docker image.
+
+---
+
 ## Libraries Needed
 To run this pipeline, you will need the following Python libraries installed:# Core Data Manipulation & Math
 pip install pandas numpy
